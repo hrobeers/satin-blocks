@@ -2,7 +2,7 @@
 
 #include <string>
 
-namespace mylib
+namespace myproject
 {
 class Feature
 {
