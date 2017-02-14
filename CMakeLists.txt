@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.7 FATAL_ERROR)
 project(MyProject)
 
-set(PROJECT_NAME "MyProject")
+set(PROJECT_NAME "myproject")
 set(PROJECT_BRIEF "${PROJECT_NAME} is a toy project to illustrate a full featured C++ CMake project.")
 
 # Version
