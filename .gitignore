@@ -1,5 +1,61 @@
+# C++ objects and libs
+
+*.slo
+*.lo
+*.o
+*.obj
+*.a
+*.la
+*.lai
+*.so
+*.dll
+*.dylib
+
+# Qt-es
+
+*.pro.user
+*.pro.user.*
+ui_*h
+moc_*.cpp
+qrc_*.cpp
+Makefile
+*.Debug
+*.Release
+*-build-*
+
+# CMake
+
+*txt.user
+*txt.user.*
+*_automoc.cpp
+*.cbp
 CMakeCache.txt
 CMakeFiles
 Makefile
 cmake_install.cmake
 install_manifest.txt
+
+# Visual Studio
+
+Backup*
+UpgradeLog*
+_UpgradeReport*
+*.opensdf
+*.sdf
+*.sln
+*.suo
+*.vcxproj*
+*.pdb
+
+src/app/debug
+src/app/release
+src/unittest/debug
+src/unittest/release
+examples/ffserver/files/
+
+# Mac OS X
+.DS_Store
+
+# build dirs
+bin
+build
