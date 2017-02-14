@@ -8,6 +8,10 @@ include_directories(
   ${PROJECT_SOURCE_DIR}/include
 )
 
+target_link_libraries(myproject
+  ${Boost_LIBRARIES}
+)
+
 install(DIRECTORY ${PROJECT_SOURCE_DIR}/include
   DESTINATION .
   COMPONENT headers

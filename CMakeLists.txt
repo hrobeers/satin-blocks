@@ -55,6 +55,9 @@ set(CMAKE_EXE_LINKER_FLAGS_DEBUG ${GCOV_FLAGS})
 set(CMAKE_CONFIGURATION_TYPES Debug Release)
 #message("CMAKE_CFG_INTDIR = ${CMAKE_CFG_INTDIR}")
 
+# Find the dependencies
+include(${PROJECT_SOURCE_DIR}/dependencies.cmake)
+
 add_subdirectory(src)
 
 # Licensing and stuff like that
