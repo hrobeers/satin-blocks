@@ -12,4 +12,4 @@ pushd ${BUILD_DIR}
 # TODO OP refer to test binary output from CMake infos
 # TODO OP how have both coverage and release? two sequential builds?
 cmake -DCMAKE_BUILD_TYPE=Debug ${BASE_DIR} || exit $?
-make || exit $?
+make -j4 || exit $?
