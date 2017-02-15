@@ -33,8 +33,8 @@ execute_process(
 # Generate the version file
 if(${GIT_BUILD_NUMBER})
     configure_file(
-        ${CMAKE_SOURCE_DIR}/src/version_template.h
-        ${CMAKE_SOURCE_DIR}/src/version_autogen.h
+        ${CMAKE_SOURCE_DIR}/src/version_template.hpp
+        ${CMAKE_SOURCE_DIR}/src/version_autogen.hpp
     )
     message(STATUS "GIT_BUILD_NUMBER: ${GIT_BUILD_NUMBER} GIT_COMMIT_HASH: ${GIT_COMMIT_HASH}")
 else()

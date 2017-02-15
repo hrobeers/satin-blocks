@@ -1,4 +1,4 @@
-#include <myproject/feature.h>
+#include <myproject/feature.hpp>
 
 using namespace myproject;
 
