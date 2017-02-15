@@ -3,6 +3,7 @@ project(MyProject)
 
 set(PROJECT_NAME "myproject")
 set(PROJECT_BRIEF "${PROJECT_NAME} is a toy project to illustrate a full featured C++ CMake project.")
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin/)
 
 # Version
 set(MAJOR_VERSION "0")
@@ -33,7 +34,7 @@ execute_process(
 if(${GIT_BUILD_NUMBER})
     configure_file(
         ${CMAKE_SOURCE_DIR}/src/version_template.h
-        ${CMAKE_SOURCE_DIR}/include/version_autogen.h
+        ${CMAKE_SOURCE_DIR}/src/version_autogen.h
     )
     message(STATUS "GIT_BUILD_NUMBER: ${GIT_BUILD_NUMBER} GIT_COMMIT_HASH: ${GIT_COMMIT_HASH}")
 else()
@@ -62,7 +63,15 @@ add_subdirectory(src)
 
 # Licensing and stuff like that
 set(LICENSE_FILE ${PROJECT_SOURCE_DIR}/LICENSE-MIT)
+set(README_FILE ${PROJECT_SOURCE_DIR}/README.md)
 
+# Install header files
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include
+  DESTINATION .
+  COMPONENT headers
+)
+
+# Install readme and license files
 install(FILES
 	${README_FILE}
 	${LICENSE_FILE}

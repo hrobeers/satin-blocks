@@ -12,7 +12,6 @@ target_link_libraries(myproject
   ${Boost_LIBRARIES}
 )
 
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/include
-  DESTINATION .
-  COMPONENT headers
+install(TARGETS myproject
+  RUNTIME DESTINATION bin
 )

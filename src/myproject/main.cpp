@@ -3,7 +3,7 @@
 #include <boost/program_options.hpp>
 namespace po = boost::program_options;
 
-#include "version_autogen.h"
+#include "../version_autogen.h"
 
 using namespace std;
 
