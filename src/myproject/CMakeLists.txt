@@ -1,17 +1,19 @@
+set(NAME myproject)
+
 # Build steps
 file(GLOB_RECURSE SRC_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
 *.cpp)
 
-add_executable(myproject ${SRC_FILES})
+add_executable(${NAME} ${SRC_FILES})
 
 include_directories(
   ${PROJECT_SOURCE_DIR}/include
 )
 
-target_link_libraries(myproject
+target_link_libraries(${NAME}
   ${Boost_LIBRARIES}
 )
 
-install(TARGETS myproject
+install(TARGETS ${NAME}
   RUNTIME DESTINATION bin
 )
