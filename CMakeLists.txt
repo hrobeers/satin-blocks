@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.7 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 
 # Project settings
 project(MyProject)
@@ -13,6 +13,7 @@ set(MINOR_VERSION "0")
 set(REVISION "1")
 
 # Build flags
+set(CMAKE_CXX_STANDARD 11)
 set(DEBUG_FLAGS "-g -O0 -Wall")
 set(RELEASE_FLAGS "-O3")
 
