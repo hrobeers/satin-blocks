@@ -4,6 +4,7 @@
 namespace po = boost::program_options;
 
 #include "../version_autogen.hpp"
+#include "mylib/myfunc.hpp"
 
 using namespace std;
 
@@ -67,8 +68,9 @@ int main(int argc, char *argv[])
     // Run the application
     //
 
-    if (false)
+    if (true)
     {
+        cout << "hello from " << mylib::my_name() << endl;
     }
     else
     {
