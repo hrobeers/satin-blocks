@@ -12,6 +12,19 @@ set(MAJOR_VERSION "0")
 set(MINOR_VERSION "0")
 set(REVISION "1")
 
+# Build options
+option(SHARED "Build shared libararies where possible." ON)
+option(CCACHE "Build using ccache." OFF)
+# Handle the build options
+if(SHARED)
+    set(LIB_TYPE SHARED)
+else()
+    set(LIB_TYPE STATIC)
+endif()
+if(CCache)
+    SET_PROPERTY(GLOBAL PROPERTY RULE_LAUNCH_COMPILE ccache)
+endif()
+
 # Build flags
 set(CMAKE_CXX_STANDARD 11)
 set(DEBUG_FLAGS "-g -O0 -Wall")
@@ -74,10 +87,12 @@ install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/.
   COMPONENT headers
 )
 
-# Install libraries
-install(DIRECTORY ${LIBRARY_OUTPUT_PATH}/.
-  DESTINATION lib
-)
+if(SHARED)
+  # Install libraries
+  install(DIRECTORY ${LIBRARY_OUTPUT_PATH}/.
+    DESTINATION lib
+  )
+endif()
 
 # Install readme and license files
 install(FILES
