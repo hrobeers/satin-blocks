@@ -87,13 +87,6 @@ install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/.
   COMPONENT headers
 )
 
-if(SHARED)
-  # Install libraries
-  install(DIRECTORY ${LIBRARY_OUTPUT_PATH}/.
-    DESTINATION lib
-  )
-endif()
-
 # Install readme and license files
 install(FILES
   ${README_FILE}
@@ -101,4 +94,4 @@ install(FILES
   DESTINATION include/${PROJECT_NAME}
 )
 
-# Note: Executable installation is configured in dedicated CMakeLists.txt
+# Note: executable and library installation is configured in dedicated CMakeLists.txt
