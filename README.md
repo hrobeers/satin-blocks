@@ -1,5 +1,4 @@
-CMake Template project
-==========================
+satin-blocks
+============
 
-Simple C++ Cmake Template Project using boost::program_options and git based build numbers.
-
+satin-blocks, Satoshi interpreter building blocks, is commandline toolbox for composing Bitcoin script development tools.

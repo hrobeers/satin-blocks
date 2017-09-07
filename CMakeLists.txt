@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.1 FATAL_ERROR)
 
 # Project settings
-project(MyProject)
-set(PROJECT_NAME "myproject")
-set(PROJECT_BRIEF "${PROJECT_NAME} is a toy project to illustrate a full featured C++ CMake project.")
+project(satin-blocks)
+set(PROJECT_NAME "satin-blocks")
+set(PROJECT_BRIEF "${PROJECT_NAME} is commandline toolbox for composing Bitcoin scripting tools.")
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin/)
 set(LIBRARY_OUTPUT_PATH ${CMAKE_BINARY_DIR}/lib/)
 

@@ -1,4 +1,4 @@
-set(NAME myproject)
+set(NAME satin-eval)
 
 # Build steps
 file(GLOB_RECURSE HDR_FILES ${CMAKE_SOURCE_DIR}/include/${NAME}/*.hpp)
@@ -9,7 +9,7 @@ add_executable(${NAME} ${SRC_FILES} ${HDR_FILES})
 
 target_link_libraries(${NAME}
   ${Boost_LIBRARIES}
-  mylib
+  ${PROJECT_SOURCE_DIR}/lib/libbitcoin_common.a
 )
 
 install(TARGETS ${NAME}
