@@ -63,3 +63,4 @@ examples/ffserver/files/
 # build dirs
 bin
 build
+deps

@@ -9,7 +9,8 @@ add_executable(${NAME} ${SRC_FILES} ${HDR_FILES})
 
 target_link_libraries(${NAME}
   ${Boost_LIBRARIES}
-  ${PROJECT_SOURCE_DIR}/lib/libbitcoin_common.a
+  ${LIBBITCOIN_LIBRARIES}
+  ${OPENSSL_LIBRARIES}
 )
 
 install(TARGETS ${NAME}
