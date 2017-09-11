@@ -8,6 +8,8 @@
 #include "utilstrencodings.h"
 #include <iostream>
 
+#include "lib/error_codes.hpp"
+
 using namespace satin;
 
 void engine::run()

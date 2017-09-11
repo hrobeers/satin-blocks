@@ -2,13 +2,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file LICENSE or http://www.opensource.org/licenses/mit-license.php.
 
+#include <cstdlib>
 #include <string>
 #include <iostream>
 #include <boost/program_options.hpp>
 namespace po = boost::program_options;
 
 #include "../version_autogen.hpp"
-#include "lib/exit_codes.hpp"
 #include "eval/engine.hpp"
 
 using namespace std;
@@ -68,15 +68,15 @@ int main(int argc, char *argv[])
            << REVISION << '.'
            << BUILD_NUMBER << '\n'
            << COMMIT_HASH << '\n';
-      exit(NO_EXEC);
+      exit(EXIT_SUCCESS);
     }
     if (vm.count("help")) {
       showHelp(cmdline_options);
-      exit(NO_EXEC);
+      exit(EXIT_SUCCESS);
     }
     if (vm.count("about")) {
       about();
-      exit(NO_EXEC);
+      exit(EXIT_SUCCESS);
     }
 
 
@@ -93,11 +93,11 @@ int main(int argc, char *argv[])
       showHelp(cmdline_options, cerr);
     }
 
-    exit(NO_EXEC);
+    exit(EXIT_SUCCESS);
   }
   catch (std::exception &ex)
   {
     cerr << ex.what() << endl;
-    exit(FAILURE);
+    exit(EXIT_FAILURE);
   }
 }
