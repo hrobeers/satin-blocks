@@ -1,4 +1,4 @@
-// Copyright (c) 2012 hrobeers (https://github.com/hrobeers)
+// Copyright (c) 2017 hrobeers (https://github.com/hrobeers)
 // Distributed under the MIT/X11 software license, see the accompanying
 // file LICENSE or http://www.opensource.org/licenses/mit-license.php.
 
