@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <boost/program_options.hpp>
 namespace po = boost::program_options;
 
@@ -86,7 +87,14 @@ int main(int argc, char *argv[])
 
     if (true)
     {
-      interpret::run();
+      if (vm.count("input-file"))
+      {
+        std::ifstream ifs;
+        ifs.open(vm["input-file"].as<string>(), std::ifstream::in);
+        interpret::run(ifs);
+      }
+      else
+        interpret::run(std::cin);
     }
     else
     {

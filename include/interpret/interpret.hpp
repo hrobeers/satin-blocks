@@ -5,8 +5,10 @@
 #ifndef SATIN_INTERPRET_HPP
 #define SATIN_INTERPRET_HPP
 
+#include <iostream>
+
 namespace satin { namespace interpret {
-  void run();
+  void run(std::istream &input);
 }}
 
 #endif // SATIN_INTERPRET_HPP
