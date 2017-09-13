@@ -5,8 +5,10 @@
 #ifndef SATIN_ENGINE_HPP
 #define SATIN_ENGINE_HPP
 
+#include <iostream>
+
 namespace satin { namespace engine {
-  void run();
+  void run(std::istream &input);
 }}
 
 #endif // SATIN_ENGINE_HPP
