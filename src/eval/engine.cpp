@@ -25,5 +25,5 @@ void engine::run()
   script << OP_1 << OP_DUP << OP_HASH160 << OP_5 << OP_EQUALVERIFY;
   BaseSignatureChecker sigchecker;
   auto result = EvalScript(stack, script, flags, sigchecker, &error);
-  std::cout << error << std::endl;
+  std::cout << error;
 }

@@ -15,9 +15,11 @@ namespace satin {
         stream << "Success";
       else
         stream << termcolor::red << ScriptErrorString(script_err) << termcolor::reset;
+      stream << std::endl;
     }
     else
       stream << (unsigned char)script_err;
+    return stream;
   }
 }
 
