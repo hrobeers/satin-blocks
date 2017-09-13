@@ -49,24 +49,22 @@ std::istream& satin::read_next_operation(std::istream& in, CScript& out)
   const std::string whitespace = " \t\r\n";
   char c = ' ';
   // Skip whitespace
-  while(in.peek()!=EOF && std::any_of(whitespace.cbegin(), whitespace.cend(), [c](char w){ return c==w; }))
+  while(in && std::any_of(whitespace.cbegin(), whitespace.cend(), [c](char w){ return c==w; }))
     {
-      in.read(&c,1);
+      in.get(c);
     }
   // Read until next whitespace
   std::stringstream operation;
-  while(in.peek()!=EOF && !std::any_of(whitespace.cbegin(), whitespace.cend(), [c](char w){ return c==w; }))
+  while(in && !std::any_of(whitespace.cbegin(), whitespace.cend(), [c](char w){ return c==w; }))
     {
       operation << c;
-      in.read(&c,1);
+      in.get(c);
     }
-
   // Translate operation to opcode and write to output
   auto opit = opcodes.find(operation.str());
-  if (opit != opcodes.cend())
+  if (opit != opcodes.end())
     {
       out << opit->second;
     }
-
   return in;
 }

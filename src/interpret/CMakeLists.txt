@@ -8,8 +8,8 @@ file(GLOB_RECURSE SRC_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}
 add_executable(${NAME} ${SRC_FILES} ${HDR_FILES})
 
 target_link_libraries(${NAME}
-  ${Boost_LIBRARIES}
   ${LIBBITCOIN_LIBRARIES}
+  ${Boost_LIBRARIES}
   ${OPENSSL_LIBRARIES}
 )
 
