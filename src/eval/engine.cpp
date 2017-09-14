@@ -18,7 +18,8 @@ void engine::run(std::istream &input)
     | SCRIPT_VERIFY_CHECKSEQUENCEVERIFY;
 
   std::vector<unsigned char> s;
-  while(input) s.push_back(input.get());
+  char c;
+  while(input.get(c)) s.push_back(c);
 
   std::vector<std::vector<unsigned char> > stack;
   CScript script(s.cbegin(), s.cend());
