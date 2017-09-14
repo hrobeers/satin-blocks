@@ -4,6 +4,7 @@
 
 #include "script/interpreter.h"
 #include "script/script.h"
+#include "utilstrencodings.h"
 
 #include "interpret/interpret.hpp"
 
@@ -13,6 +14,7 @@ namespace satin {
   std::map<std::string, opcodetype> opcodes;
   void init_opcodes();
   std::istream& read_next_operation(std::istream& in, CScript& out);
+  bool isHexString(const char* s);
 }
 
 using namespace satin;
@@ -60,11 +62,39 @@ std::istream& satin::read_next_operation(std::istream& in, CScript& out)
       operation << c;
       in.get(c);
     }
-  // Translate operation to opcode and write to output
-  auto opit = opcodes.find(operation.str());
-  if (opit != opcodes.end())
+
+  switch (operation.peek())
     {
-      out << opit->second;
+    case '0':
+      // Data pushes start with "0x"
+      const char* op_str;
+      op_str = operation.str().c_str();
+      if (op_str[0]=='0' && op_str[1]=='x' && isHexString(&op_str[2]))
+        {
+          auto data = ParseHex(&op_str[2]);
+          out << data;
+        }
+      break;
+
+    default:
+      // Try translating operation to opcode and write to output
+      auto opit = opcodes.find(operation.str());
+      if (opit != opcodes.end())
+        {
+          out << opit->second;
+        }
+      break;
     }
   return in;
+}
+
+bool satin::isHexString(const char* s)
+{
+  const std::string hex_chars = "0123456789abcdef";
+  for (int i=0; s[i]!='\0'; i++)
+    {
+      if (!std::any_of(hex_chars.cbegin(), hex_chars.cend(), [s,i](char h){ return s[i]==h; }))
+        return false;
+    }
+  return true;
 }
