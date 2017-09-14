@@ -6,12 +6,12 @@
 #include "script/interpreter.h"
 #include "utilstrencodings.h"
 
-#include "eval/engine.hpp"
+#include "run/runtime.hpp"
 #include "lib/error_codes.hpp"
 
 using namespace satin;
 
-void engine::run(std::istream &input)
+void runtime::run(std::istream &input)
 {
   const int flags = SCRIPT_VERIFY_P2SH
     | SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY

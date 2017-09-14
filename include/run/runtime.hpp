@@ -2,13 +2,13 @@
 // Distributed under the MIT/X11 software license, see the accompanying
 // file LICENSE or http://www.opensource.org/licenses/mit-license.php.
 
-#ifndef SATIN_INTERPRET_HPP
-#define SATIN_INTERPRET_HPP
+#ifndef SATIN_RUNTIME_HPP
+#define SATIN_RUNTIME_HPP
 
 #include <iostream>
 
-namespace satin { namespace interpret {
+namespace satin { namespace runtime {
   void run(std::istream &input);
 }}
 
-#endif // SATIN_INTERPRET_HPP
+#endif // SATIN_RUNTIME_HPP

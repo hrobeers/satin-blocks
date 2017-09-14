@@ -6,7 +6,7 @@
 #include "script/script.h"
 #include "utilstrencodings.h"
 
-#include "interpret/interpret.hpp"
+#include "compile/compiler.hpp"
 
 #include <map>
 
@@ -19,7 +19,7 @@ namespace satin {
 
 using namespace satin;
 
-void interpret::run(std::istream &input)
+void compiler::run(std::istream &input)
 {
   init_opcodes();
   CScript script;

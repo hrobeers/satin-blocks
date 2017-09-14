@@ -10,7 +10,7 @@
 namespace po = boost::program_options;
 
 #include "../version_autogen.hpp"
-#include "eval/engine.hpp"
+#include "run/runtime.hpp"
 
 using namespace std;
 using namespace satin;
@@ -22,7 +22,7 @@ inline void showHelp(const po::options_description &cmdline_options, std::ostrea
 
 inline void about(std::ostream &stream = cout)
 {
-  stream << "satin-eval is the script execution engine of the satin-blocks project." << "\n";
+  stream << "satin-run is the script execution runtime of the satin-blocks project." << "\n";
   stream << "\n";
   stream << "Copyright (c) 2017 hrobeers (https://github.com/hrobeers)" << "\n";
   stream << "Distributed under the MIT/X11 software license, see the accompanying file LICENSE or http://www.opensource.org/licenses/mit-license.php." << "\n";
@@ -91,10 +91,10 @@ int main(int argc, char *argv[])
       {
         std::ifstream ifs;
         ifs.open(vm["input-file"].as<string>(), std::ifstream::in);
-        engine::run(ifs);
+        runtime::run(ifs);
       }
       else
-        engine::run(std::cin);
+        runtime::run(std::cin);
     }
     else
     {
