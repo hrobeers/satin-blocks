@@ -21,6 +21,11 @@ void runtime::run(std::istream &input)
   char c;
   while(input.get(c)) s.push_back(c);
 
+  if (!s.size()) {
+    std::cout << SCRIPT_ERR_BAD_OPCODE;
+    return;
+  }
+
   std::vector<std::vector<unsigned char> > stack;
   CScript script(s.cbegin(), s.cend());
   ScriptError error;

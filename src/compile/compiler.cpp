@@ -63,28 +63,33 @@ std::istream& satin::read_next_operation(std::istream& in, CScript& out)
       in.get(c);
     }
 
-  switch (operation.peek())
+  std::string str_op = operation.str();
+  if (!str_op.size()) return in;
+  const char* sz_op = str_op.c_str();
+  switch (sz_op[0])
     {
     case '0':
       // Data pushes start with "0x"
-      const char* op_str;
-      op_str = operation.str().c_str();
-      if (op_str[0]=='0' && op_str[1]=='x' && isHexString(&op_str[2]))
+      if (sz_op[0]=='0' && sz_op[1]=='x' && isHexString(&sz_op[2]))
         {
-          auto data = ParseHex(&op_str[2]);
+          auto data = ParseHex(&sz_op[2]);
           out << data;
+          return in;
         }
       break;
 
     default:
       // Try translating operation to opcode and write to output
-      auto opit = opcodes.find(operation.str());
+      auto opit = opcodes.find(sz_op);
       if (opit != opcodes.end())
         {
           out << opit->second;
+          return in;
         }
       break;
     }
+
+  out << OP_INVALIDOPCODE;
   return in;
 }
 

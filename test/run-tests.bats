@@ -11,3 +11,10 @@
     # SCRIPT_ERR_EQUALVERIFY = 0x0b
     [ "$result" == "0b" ]
 }
+
+@test "run: fail on empty input" {
+    # hello (some invalid data)
+    result=$(echo -n '' | satin-run | hexdump -e '/1 "%02x"')
+    # SCRIPT_ERR_BAD_OPCODE = 0x0f
+    [ "$result" == "0f" ]
+}
