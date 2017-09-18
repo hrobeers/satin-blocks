@@ -18,9 +18,9 @@ find_library(LIBBITCOIN_COMMON NAMES bitcoin_common libbitcoin_common
 find_library(LIBBITCOIN_UTIL NAMES bitcoin_util libbitcoin_util
              HINTS ${PC_LIBBITCOIN_LIBDIR} ${PC_LIBBITCOIN_LIBRARY_DIRS} )
 find_library(LIBBITCOIN_SECP256 NAMES secp256k1 libsecp256k1
-             HINTS ${PC_LIBBITCOIN_LIBDIR} ${PC_LIBBITCOIN_LIBRARY_DIRS} )
+             HINTS ${PC_LIBBITCOIN_LIBDIR}/secp256k1/.libs ${PC_LIBBITCOIN_LIBRARY_DIRS} )
 find_library(LIBBITCOIN_CRYPTO NAMES bitcoin_crypto libbitcoin_crypto
-             HINTS ${PC_LIBBITCOIN_LIBDIR} ${PC_LIBBITCOIN_LIBRARY_DIRS} )
+             HINTS ${PC_LIBBITCOIN_LIBDIR}/crypto ${PC_LIBBITCOIN_LIBRARY_DIRS} )
 
 include(FindPackageHandleStandardArgs)
 # handle the QUIETLY and REQUIRED arguments and set LIBBITCOIN_FOUND to TRUE
