@@ -1,7 +1,6 @@
 #!/bin/bash
 
-BASE_DIR=$(dirname "$(readlink -f $0)")
-BASE_NAME=$(basename "${BASE_DIR}")
+BASE_DIR=$(dirname "$(readlink -f $0)")/../
 
 BUILD_DIR=${BASE_DIR}/build/
 
