@@ -20,6 +20,17 @@ Satin is architected as a collection of pipable building blocks and composed app
 |---------------|------|-------------|
 | satin-shell   | Bash | Simple shell for interactive script evaluation. |
 
+#### Donations
+
+Donations appreciated on:
+
+| Coin           | Address                                        |
+|----------------|------------------------------------------------|
+| Bitcoin Segwit | bitcoin:1BTCVmeapxFfLLJMnfBpWziyrXQPFaPzJT     |
+| Bitcoin Cash   | bitcoincash:1BCCrNsErzdnybNciwiMuEYeVgPbBCF8JN |
+| Bitcoin Cash   | bitcoincash:1BCHeoUAbf8ntgLCBtgF2Dt6Aid6jBGXv9 |
+| Peercoin       | peercoin:PSATsp46WF9S1bPPRvVSszBmrda3U5627s    |
+
 OS support
 ----------
 
