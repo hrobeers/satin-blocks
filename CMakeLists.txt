@@ -80,7 +80,7 @@ include(${PROJECT_SOURCE_DIR}/dependencies.cmake)
 add_subdirectory(src)
 
 # Licensing and stuff like that
-set(LICENSE_FILE ${PROJECT_SOURCE_DIR}/LICENSE)
+set(LICENSE_FILE ${PROJECT_SOURCE_DIR}/LICENSE.md)
 set(README_FILE ${PROJECT_SOURCE_DIR}/README.md)
 
 # Install header files
