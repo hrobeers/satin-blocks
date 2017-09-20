@@ -37,18 +37,20 @@ do
 done < /dev/tty
 ```
 
+For more information, checkout the individual blocks and applications.
+
 #### Blocks
 
-| Name          | Lang | Description |
-|---------------|------|-------------|
-| satin-compile | C++  | Satoshi script compiler: translates human readable scripts into binary input for the runtime (satin-run). |
-| satin-run     | C++  | Satoshi runtime: runtime for compiled scripts. |
+| Name                                     | Lang | Description |
+|------------------------------------------|------|-------------|
+| [satin-compile](src/compile/README.md)   | C++  | Satoshi script compiler: translates human readable scripts into binary input for the runtime (satin-run). |
+| [satin-run](src/run/README.md)           | C++  | Satoshi runtime: runtime for compiled scripts. |
 
 #### Applications
 
-| Name          | Lang | Description |
-|---------------|------|-------------|
-| satin-shell   | Bash | Simple shell for interactive script evaluation. |
+| Name                                     | Lang | Description |
+|------------------------------------------|------|-------------|
+| [satin-shell](src/shell/README.md)       | Bash | Simple shell for interactive script evaluation. |
 
 #### Donations
 
