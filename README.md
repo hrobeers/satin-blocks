@@ -7,6 +7,36 @@ What is satin-blocks?
 Satoshi interpreter building blocks, a commandline toolbox for composing Bitcoin script development tools.
 Satin is architected as a collection of pipable building blocks and composed applications, inspired by git, gstreamer and the Unix philosophy.
 
+#### Usage
+
+satin-shell is a simple interactive shell created for educational purposes.
+Due to lack of advanced features, it is meant to get replaced as default interpreter.
+
+Simple usage example of satin-shell:
+```
+satin-shell 0.1
+satin-0.1$ OP_1 OP_2 OP_EQUALVERIFY
+Script failed an OP_EQUALVERIFY operation
+satin-0.1$ OP_3 OP_3 OP_EQUALVERIFY
+Success
+satin-0.1$ 0x1a2b3c OP_DUP OP_EQUALVERIFY
+Success
+satin-0.1$
+```
+
+Looking at the satin-shell code illustrates the UNIX principles of simple building blocks.
+The code below is the full implementation of a working satin shell written in bash.
+```
+prefix="satin-0.1$"
+echo "satin-shell 0.1"
+echo -n "${prefix} "
+while read input
+do
+    echo $input | satin-compile | satin-run
+    echo -n "${prefix} "
+done < /dev/tty
+```
+
 #### Blocks
 
 | Name          | Lang | Description |
@@ -59,11 +89,15 @@ Satin statically links to bitcoinclassic's libbitcoin_*.a libraries.
 CMake is able to autodetect headers and libs when installed in include and lib folders.
 If not, fetch and compile them using the build-libbitcoin script:
 
-```scripts/build-libbitcoin.sh```
+```
+scripts/build-libbitcoin.sh
+```
 
 Building satin:
 
-```scripts/build.sh```
+```
+scripts/build.sh
+```
 
 If you are familiar with CMake, the `build.sh` script is a simple wrapper around the cmake and make command, make sure to check it out.
 
