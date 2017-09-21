@@ -36,7 +36,19 @@ inline void about(std::ostream &stream = cout)
   stream << "satin-compile is the script compilation engine of the satin-blocks project." << "\n";
   stream << "\n";
   stream << "Copyright (c) 2017 hrobeers (https://github.com/hrobeers)" << "\n";
-  stream << "Distributed under the MIT/X11 software license, see the accompanying file LICENSE or http://www.opensource.org/licenses/mit-license.php." << "\n";
+  stream << "\n";
+  stream << "This program is free software: you can redistribute it and/or modify" << "\n";
+  stream << "it under the terms of the GNU General Public License as published by" << "\n";
+  stream << "the Free Software Foundation, either version 3 of the License, or" << "\n";
+  stream << "(at your option) any later version." << "\n";
+  stream << "\n";
+  stream << "This program is distributed in the hope that it will be useful," << "\n";
+  stream << "but WITHOUT ANY WARRANTY; without even the implied warranty of" << "\n";
+  stream << "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the" << "\n";
+  stream << "GNU General Public License for more details." << "\n";
+  stream << "\n";
+  stream << "You should have received a copy of the GNU General Public License" << "\n";
+  stream << "along with this program.  If not, see <http://www.gnu.org/licenses/>." << std::endl;
 }
 
 int main(int argc, char *argv[])
