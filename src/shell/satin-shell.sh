@@ -15,6 +15,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+# Forward generic options to satin-help
+ARGS=`getopt -o av --long about,version -n 'satin-shell' -- "$@"`
+if [[ $ARGS != " --"* ]]
+then
+    satin-help $ARGS
+    exit 0
+fi
+
 prefix="satin-0.1$"
 
 echo "satin-shell 0.1"
