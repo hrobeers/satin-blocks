@@ -50,6 +50,7 @@ For more information, checkout the individual blocks and applications.
 
 | Name                                     | Lang | Description |
 |------------------------------------------|------|-------------|
+| [satin](src/satin/README.md)             | Bash | Main entry point of the satin-blocks suite. |
 | [satin-shell](src/shell/README.md)       | Bash | Simple shell for interactive script evaluation. |
 
 #### Donations
