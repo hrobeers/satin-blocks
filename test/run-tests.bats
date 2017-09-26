@@ -20,3 +20,11 @@ BD=${BATS_TEST_DIRNAME}/../build/bin
     # SCRIPT_ERR_BAD_OPCODE = 0x0f
     [ "$result" == "0f" ]
 }
+
+@test "run: pretty printing" {
+    # Pipe through cat to make sure no tty is detected
+    result_bin=$(echo "hello" | satin-run | cat | hexdump -e '/1 "%02x"')
+    result_pretty=$(echo "hello" | satin-run -p | cat)
+    [ "$result_bin" == "13" ]
+    [ "$result_pretty" == "Invalid OP_IF construction" ]
+}

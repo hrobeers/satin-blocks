@@ -20,8 +20,10 @@
 #include "script/script_error.h"
 
 namespace satin {
+  bool force_tty = false;
+
   std::ostream& operator <<(std::ostream& stream, const ScriptError& script_err) {
-    if (termcolor::_internal::is_atty(stream)) {
+    if (force_tty || termcolor::_internal::is_atty(stream)) {
       if (script_err == SCRIPT_ERR_OK)
         stream << "Success";
       else

@@ -71,6 +71,7 @@ int main(int argc, char *argv[])
     //
     po::options_description generic_params("Generic options");
     generic_params.add_options()
+      ("pretty,p", "Print human readable output (default in terminals)")
       ("version,v", "Print version string")
       ("about,a", "About this application")
       ("help,h", "Print help");
@@ -114,10 +115,10 @@ int main(int argc, char *argv[])
       {
         std::ifstream ifs;
         ifs.open(vm["input-file"].as<string>(), std::ifstream::in);
-        runtime::run(ifs);
+        runtime::run(ifs, vm.count("pretty"));
       }
       else
-        runtime::run(std::cin);
+        runtime::run(std::cin, vm.count("pretty"));
     }
     else
     {

@@ -22,11 +22,13 @@
 
 using namespace satin;
 
-void runtime::run(std::istream &input)
+void runtime::run(std::istream &input, bool force_tty)
 {
   const int flags = SCRIPT_VERIFY_P2SH
     | SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY
     | SCRIPT_VERIFY_CHECKSEQUENCEVERIFY;
+
+  satin::force_tty = force_tty;
 
   std::vector<unsigned char> s;
   char c;

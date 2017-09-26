@@ -19,7 +19,7 @@
 #include <iostream>
 
 namespace satin { namespace runtime {
-  void run(std::istream &input);
+  void run(std::istream &input, bool force_tty=false);
 }}
 
 #endif // SATIN_RUNTIME_HPP
