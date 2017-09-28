@@ -91,7 +91,7 @@
 (defun satin-eval ()
   "Evaluate the current satin buffer."
   (when (eq major-mode 'satin-mode)
-    (shell-command (format "satin-compile %s | satin-run -p" buffer-file-name))))
+    (shell-command (format "satin-compile %s | satin-run -t" buffer-file-name))))
 
 (add-hook 'after-save-hook #'satin-eval)
 

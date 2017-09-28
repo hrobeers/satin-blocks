@@ -20,12 +20,21 @@
 #include "script/script_error.h"
 
 namespace satin {
-  bool force_tty = false;
 
-  std::ostream& operator <<(std::ostream& stream, const ScriptError& script_err) {
-    if (force_tty || termcolor::_internal::is_atty(stream)) {
+  struct print_opts
+  {
+    bool force_tty;
+    bool force_color;
+  };
+
+  static print_opts print_options;
+
+  inline std::ostream& operator <<(std::ostream& stream, const ScriptError& script_err) {
+    if (print_options.force_tty || termcolor::_internal::is_atty(stream)) {
+      if (print_options.force_color)
+        termcolor::colorize(stream);
       if (script_err == SCRIPT_ERR_OK)
-        stream << "Success";
+        stream << termcolor::green << "Success" << termcolor::reset;
       else
         stream << termcolor::red << ScriptErrorString(script_err) << termcolor::reset;
       stream << std::endl;

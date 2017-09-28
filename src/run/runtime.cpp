@@ -18,17 +18,16 @@
 #include "utilstrencodings.h"
 
 #include "run/runtime.hpp"
-#include "lib/error_codes.hpp"
 
 using namespace satin;
 
-void runtime::run(std::istream &input, bool force_tty)
+void runtime::run(std::istream &input, print_opts opts)
 {
   const int flags = SCRIPT_VERIFY_P2SH
     | SCRIPT_VERIFY_CHECKLOCKTIMEVERIFY
     | SCRIPT_VERIFY_CHECKSEQUENCEVERIFY;
 
-  satin::force_tty = force_tty;
+  satin::print_options = opts;
 
   std::vector<unsigned char> s;
   char c;

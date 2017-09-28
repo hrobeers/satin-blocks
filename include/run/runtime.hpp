@@ -17,9 +17,10 @@
 #define SATIN_RUNTIME_HPP
 
 #include <iostream>
+#include "lib/error_codes.hpp"
 
 namespace satin { namespace runtime {
-  void run(std::istream &input, bool force_tty=false);
+  void run(std::istream &input, print_opts opts = print_opts());
 }}
 
 #endif // SATIN_RUNTIME_HPP

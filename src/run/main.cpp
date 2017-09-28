@@ -67,11 +67,19 @@ int main(int argc, char *argv[])
 
 
     //
+    // Print options
+    //
+    po::options_description print_params("Print options");
+    print_params.add_options()
+      ("text,t", "Print human readable output (default in terminals)")
+      ("pretty,p", "Print human readable and colorized output (default in terminals)");
+
+
+    //
     // Generic options
     //
     po::options_description generic_params("Generic options");
     generic_params.add_options()
-      ("pretty,p", "Print human readable output (default in terminals)")
       ("version,v", "Print version string")
       ("about,a", "About this application")
       ("help,h", "Print help");
@@ -80,7 +88,7 @@ int main(int argc, char *argv[])
     // Process the actual command line arguments given by the user
     //
     po::options_description cmdline_options;
-    cmdline_options.add(positional_params).add(generic_params);
+    cmdline_options.add(positional_params).add(print_params).add(generic_params);
 
     po::variables_map vm;
     po::store(po::command_line_parser(argc, argv).options(cmdline_options).positional(positional_options).run(), vm);
@@ -111,14 +119,19 @@ int main(int argc, char *argv[])
 
     if (true)
     {
+      print_opts opts = {
+        vm.count("text") || vm.count("pretty"),
+        vm.count("pretty")
+      };
+
       if (vm.count("input-file"))
       {
         std::ifstream ifs;
         ifs.open(vm["input-file"].as<string>(), std::ifstream::in);
-        runtime::run(ifs, vm.count("pretty"));
+        runtime::run(ifs, opts);
       }
       else
-        runtime::run(std::cin, vm.count("pretty"));
+        runtime::run(std::cin, opts);
     }
     else
     {

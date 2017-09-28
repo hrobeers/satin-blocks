@@ -24,7 +24,11 @@ BD=${BATS_TEST_DIRNAME}/../build/bin
 @test "run: pretty printing" {
     # Pipe through cat to make sure no tty is detected
     result_bin=$(echo "hello" | satin-run | cat | hexdump -e '/1 "%02x"')
-    result_pretty=$(echo "hello" | satin-run -p | cat)
     [ "$result_bin" == "13" ]
-    [ "$result_pretty" == "Invalid OP_IF construction" ]
+
+    result_text=$(echo "hello" | satin-run -t | cat)
+    [ "$result_text" == "Invalid OP_IF construction" ]
+
+    result_pretty=$(echo "hello" | satin-run -p | cat | hexdump -e '/2 "%02x"')
+    [ "$result_pretty" == "5b1b3133496d766e6c6164694f205f50464963206e6f7473757274636f691b6e305b6d300a" ]
 }
