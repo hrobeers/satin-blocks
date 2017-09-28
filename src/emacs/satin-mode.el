@@ -69,7 +69,8 @@
 (define-derived-mode satin-mode fundamental-mode "satin"
   "major mode for editing satoshi scripts."
   ;; code for syntax highlighting
-  (setq font-lock-defaults '((satin-font-lock-keywords))))
+  (set (make-local-variable 'font-lock-defaults)
+     '(satin-font-lock-keywords nil t)))
 
 ;; clear memory. no longer needed
 (setq satin-keywords nil)
