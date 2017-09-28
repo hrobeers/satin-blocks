@@ -75,6 +75,7 @@ std::istream& satin::read_next_operation(std::istream& in, CScript& out)
     }
 
   std::string str_op = operation.str();
+
   if (!str_op.size()) return in;
   const char* sz_op = str_op.c_str();
   switch (sz_op[0])
@@ -91,6 +92,7 @@ std::istream& satin::read_next_operation(std::istream& in, CScript& out)
 
     default:
       // Try translating operation to opcode and write to output
+      for (char &c : str_op) c = toupper(c); // case insensitive
       auto opit = opcodes.find(sz_op);
       if (opit != opcodes.end())
         {

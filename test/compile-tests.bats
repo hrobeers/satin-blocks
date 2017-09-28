@@ -17,3 +17,8 @@ BD=${BATS_TEST_DIRNAME}/../build/bin
     # OP_INVALIDOPCODE = 0xff
     [ "$result" = "ff" ]
 }
+
+@test "compile: case insensitive opcode parsing" {
+    result=$(echo "OP_1 op_sha1 Op_1 op_SHA1 OP_equalverify" | ${BD}/satin-compile | hexdump -e '/1 "%02x"')
+    [ "$result" == "51a751a788" ]
+}
