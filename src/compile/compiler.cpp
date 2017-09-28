@@ -22,10 +22,13 @@
 #include <map>
 
 namespace satin {
+  const std::string opcode_prefix = "OP_";
+
   std::map<std::string, opcodetype> opcodes;
   void init_opcodes();
   std::istream& read_next_operation(std::istream& in, CScript& out);
-  bool isHexString(const char* s);
+  bool is_op_prefixed(const std::string& str);
+  bool is_hex(const char* s);
 }
 
 using namespace satin;
@@ -44,16 +47,20 @@ void compiler::run(std::istream &input)
 
 void satin::init_opcodes()
 {
-  // Map opcodes to standard GetOpName() result
+  // Map opcodes to GetOpName() result
   for (unsigned char i=0; i<OP_INVALIDOPCODE; i++)
-    opcodes[GetOpName((opcodetype)i)] = (opcodetype)i;
-
-  // Map missing pushcodes
-  for (int i=0; i<16; i++)
     {
-      std::stringstream pushcode;
-      pushcode << "OP_" << i+1;
-      opcodes[pushcode.str()] = (opcodetype)(OP_1 + i);
+      const char* code;
+      std::string op_name = GetOpName((opcodetype)i);
+
+      // strip prefix if present
+      if (is_op_prefixed(op_name))
+        code = &op_name.c_str()[opcode_prefix.size()];
+      else
+        code = op_name.c_str();
+
+      // map string to opcode
+      opcodes[code] = (opcodetype)i;
     }
 }
 
@@ -82,7 +89,7 @@ std::istream& satin::read_next_operation(std::istream& in, CScript& out)
     {
     case '0':
       // Data pushes start with "0x"
-      if (sz_op[0]=='0' && sz_op[1]=='x' && isHexString(&sz_op[2]))
+      if (sz_op[0]=='0' && sz_op[1]=='x' && is_hex(&sz_op[2]))
         {
           auto data = ParseHex(&sz_op[2]);
           out << data;
@@ -93,6 +100,10 @@ std::istream& satin::read_next_operation(std::istream& in, CScript& out)
     default:
       // Try translating operation to opcode and write to output
       for (char &c : str_op) c = toupper(c); // case insensitive
+      // remove the OP_ prefix if present (mapped without)
+      if (is_op_prefixed(str_op))
+        sz_op = &sz_op[opcode_prefix.size()];
+      // find the opcode
       auto opit = opcodes.find(sz_op);
       if (opit != opcodes.end())
         {
@@ -106,7 +117,13 @@ std::istream& satin::read_next_operation(std::istream& in, CScript& out)
   return in;
 }
 
-bool satin::isHexString(const char* s)
+bool satin::is_op_prefixed(const std::string& str)
+{
+  return opcode_prefix.compare(0,opcode_prefix.size(),
+                               str, 0, opcode_prefix.size()) == 0;
+}
+
+bool satin::is_hex(const char* s)
 {
   const std::string hex_chars = "0123456789abcdef";
   for (int i=0; s[i]!='\0'; i++)

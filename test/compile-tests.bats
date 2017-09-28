@@ -22,3 +22,8 @@ BD=${BATS_TEST_DIRNAME}/../build/bin
     result=$(echo "OP_1 op_sha1 Op_1 op_SHA1 OP_equalverify" | ${BD}/satin-compile | hexdump -e '/1 "%02x"')
     [ "$result" == "51a751a788" ]
 }
+
+@test "compile: allow non OP_ prefixed opcodes" {
+    result=$(echo "OP_1 sha1 1 SHA1 OP_equalverify" | ${BD}/satin-compile | hexdump -e '/1 "%02x"')
+    [ "$result" == "51a751a788" ]
+}
