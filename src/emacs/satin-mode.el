@@ -65,6 +65,15 @@
         ;; in general, longer words first
         ))
 
+;; comment syntax
+(defvar satin-mode-syntax-table nil "Syntax table for `satin-mode'.")
+(setq satin-mode-syntax-table
+      (let ( (synTable (make-syntax-table)))
+        ;; python style comment: “# …”
+        (modify-syntax-entry ?# "<" synTable)
+        (modify-syntax-entry ?\n ">" synTable)
+        synTable))
+
 ;;;###autoload
 (define-derived-mode satin-mode fundamental-mode "satin"
   "major mode for editing satoshi scripts."

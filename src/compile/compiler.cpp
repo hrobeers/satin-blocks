@@ -87,6 +87,11 @@ std::istream& satin::read_next_operation(std::istream& in, CScript& out)
   const char* sz_op = str_op.c_str();
   switch (sz_op[0])
     {
+    case '#':
+      // comment lines start with #
+      while(in && c != '\n') in.get(c);
+      return in;
+
     case '0':
       // Data pushes start with "0x"
       if (sz_op[0]=='0' && sz_op[1]=='x' && is_hex(&sz_op[2]))
