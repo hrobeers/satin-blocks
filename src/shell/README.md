@@ -5,15 +5,24 @@ satin-shell is a simple interactive shell created for educational purposes.
 Due to lack of advanced features, it is meant to get replaced as default interpreter.
 
 Simple usage example of satin-shell:
+
+![satin-shell 0.1](../../docs/gifs/satin-shell.gif)
+
 ```
 satin-shell 0.1
-satin-0.1$ OP_1 OP_2 OP_EQUALVERIFY
-Script failed an OP_EQUALVERIFY operation
-satin-0.1$ OP_3 OP_3 OP_EQUALVERIFY
+satin-0.1$ OP_1 OP_1 OP_EQUALVERIFY
 Success
-satin-0.1$ 0x1a2b3c OP_DUP OP_EQUALVERIFY
+satin-0.1$ op_1 Op_1 Op_equalVerIfy
+Success
+satin-0.1$ 1 1 equalverify
+Success
+satin-0.1$ 1 2 equalverify
+Script failed an OP_EQUALVERIFY operation
+satin-0.1$ 0x12abef 0x5632 equalverify
+Script failed an OP_EQUALVERIFY operation
+satin-0.1$ 0x123456 dup equalverify
 Success
 satin-0.1$
 ```
 
-Looking at the satin-shell code illustrates the UNIX principles of simple building blocks.
+Looking at the few lines of [satin-shell code](satin-shell.sh) illustrates the UNIX principles of simple building blocks.
