@@ -48,6 +48,12 @@ done < /dev/tty
 
 For more information, checkout the individual blocks and applications.
 
+#### Emacs integration
+
+[satin-emacs](src/emacs/README.md)
+
+![emacs-mode.el](docs/gifs/satin-emacs.gif)
+
 #### Blocks
 
 | Name                                     | Lang | Description |
@@ -61,6 +67,7 @@ For more information, checkout the individual blocks and applications.
 |------------------------------------------|------|-------------|
 | [satin](src/satin/README.md)             | Bash | Main entry point of the satin-blocks suite. |
 | [satin-shell](src/shell/README.md)       | Bash | Simple shell for interactive script evaluation. |
+| [satin-emacs](src/emacs/README.md)       | Emasc Lisp | Emacs mode for satin-blocks itegration. |
 
 #### Donations
 
